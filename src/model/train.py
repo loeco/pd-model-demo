@@ -17,7 +17,7 @@ def build_model(v='0.1'):
         use = ['age','income','utilization','delinquency_count']; clf = LogisticRegression(C=0.5,max_iter=300); calibrate=True
     return use, clf, calibrate
 
-def train(version='0.1'):
+def train(version='0.2'):
     df = load_data()
     use, clf, calibrate = build_model(version)
     X, y = df[use], df['default']
