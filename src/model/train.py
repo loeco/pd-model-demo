@@ -10,14 +10,14 @@ def load_data(path='data/credit_synth.csv'):
 
 def build_model(v='0.1'):
     if v=='0.1':
-        use = ['age','income','utilization']; clf = LogisticRegression(max_iter=200); calibrate=False
+        use = ['age','income','utilization']; clf = LogisticRegression(max_iter=200); calibrate=True
     elif v=='0.2':
-        use = ['age','income','utilization','delinquency_count']; clf = LogisticRegression(C=0.5,max_iter=300); calibrate=False
+        use = ['age','income','utilization','delinquency_count']; clf = LogisticRegression(C=0.5,max_iter=300); calibrate=True
     else: # v0.3
         use = ['age','income','utilization','delinquency_count']; clf = LogisticRegression(C=0.5,max_iter=300); calibrate=True
     return use, clf, calibrate
 
-def train(version='0.2'):
+def train(version='0.3'):
     df = load_data()
     use, clf, calibrate = build_model(version)
     X, y = df[use], df['default']
